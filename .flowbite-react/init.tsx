@@ -12,7 +12,7 @@ import React from "react";
 export const config = {
   dark: true,
   prefix: "",
-  version: 4,
+  version: 3,
 };
 
 export function ThemeInit() {

@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 import './Card.css';
-import { SiCnn, SiNewyorktimes } from "react-icons/si";
-import { FcBbc } from "react-icons/fc";
+import { SiCnn, SiNewyorktimes } from 'react-icons/si';
+import { FcBbc } from 'react-icons/fc';
 import berita_1 from '../../Img/berita_1.jpeg';
 import berita_2 from '../../Img/berita_2.jpeg';
 import berita_3 from '../../Img/berita_3.jpeg';
@@ -16,62 +16,35 @@ const CardNews = () => {
       link: 'https://economy.okezone.com/read/2025/05/29/320/3143044/petani-jangan-resah-koperasi-desa-merah-putih-siap-serap-hasil-panennbsp',
     },
     {
-      gambar: berita_2,
-      Animasi: 'fade-left',
-      delay: '1500',
-      judul: 'Tertinggi Sepanjang Sejarah, Penyaluran Pupuk Subsidi Tembus 3 Juta Ton',
-      link: 'https://economy.okezone.com/read/2025/06/22/320/3149309/tertinggi-sepanjang-sejarah-penyaluran-pupuk-subsidi-tembus-3-juta-ton',
-    },
-    {
       gambar: berita_3,
       Animasi: 'fade-left',
-      delay: '2000',
+      delay: '500',
       judul: 'Instruksi Prabowo, Deregulasi Pertanian Bisa Tingkatkan Kesejahteraan Petani',
       link: 'https://economy.okezone.com/read/2025/05/22/320/3141179/instruksi-prabowo-deregulasi-pertanian-bisa-tingkatkan-kesejahteraan-petani',
-    }
+    },
   ];
 
   return (
-    <div className="flex gap-4 flex-col md:flex-row ">
-      {Items.map((item, index) => (
-        <div key={index} className="card" data-aos={item.Animasi} data-aos-duration={item.delay}>
-          <div
-            className="top-section bg-center bg-no-repeat"
-            style={{
-              backgroundImage: `url(${item.gambar})`,
-              backgroundSize: '100%',
-              backgroundPosition: 'center bottom',
-            }}
+    <div className="flex gap-3 flex-wrap">
+      {Items.map((item, index) => {
+        return (
+          <a
+            key={index}
+            href={item.link}
+            className="group relative w-[360px] h-[200px] cursor-pointer flex flex-col items-end justify-end bg-center rounded-lg bg-no-repeat bg-[length:100%] transition-all duration-500 ease-in-out hover:bg-[length:110%]"
+            style={{ backgroundImage: `url('${item.gambar}')` }}
           >
-            <div className="border"></div>
-            <div className="icons">
-              <div className="logo text-white font-bold">NEWS</div>
-            </div>
-          </div>
+            <div className="absolute inset-0 bg-black/40 rounded-lg transition-colors duration-500 group-hover:bg-black/0"></div>
 
-          <div className="flex gap-2 mt-2">
-            <SiCnn className="text-red-600 text-[24px]" />
-            <FcBbc className="text-[24px]" />
-            <SiNewyorktimes className="text-blue-400 text-[24px]" />
-          </div>
-
-          <div className="bottom-section mt-2">
-            <span className="title text-black text-[12px] text-start block">
-              {item.judul}
-            </span>
-            <div className="flex flex-col mt-2">
-              <a
-                href={item.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-[#1E6D3C] text-[10px] hover:bg-[#568A69] transition-all duration-300 ease-in-out rounded-lg p-2 text-white text-center"
-              >
-                Selengkapnya
-              </a>
+            <p className="relative z-10 text-white px-3 font-bold">{item.judul}</p>
+            <div className="relative z-10 w-full flex gap-5 mb-[10px] px-4">
+              <SiCnn className="text-red-600 text-[30px]" />
+              <FcBbc className="text-[30px]" />
+              <SiNewyorktimes className="text-blue-600 text-[30px]" />
             </div>
-          </div>
-        </div>
-      ))}
+          </a>
+        );
+      })}
     </div>
   );
 };

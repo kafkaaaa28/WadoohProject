@@ -1,11 +1,20 @@
-body {
+body,
+html,
+* {
   margin: 0;
+  height: auto;
+  padding: 0;
   font-family: 'Poppins', sans-serif;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+@font-face {
+  font-family: 'PostBook';
+  src: url('./assets/fonts/Postbook.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @tailwind base;
