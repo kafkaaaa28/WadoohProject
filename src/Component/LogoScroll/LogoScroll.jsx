@@ -1,6 +1,6 @@
 import { useRef, useLayoutEffect, useState } from 'react';
 import { motion, useScroll, useSpring, useTransform, useMotionValue, useVelocity, useAnimationFrame } from 'framer-motion';
-import './ScrollVelocity.css';
+import './LogoScroll.css';
 
 function useElementWidth(ref) {
   const [width, setWidth] = useState(0);

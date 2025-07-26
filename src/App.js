@@ -14,7 +14,8 @@ import ScrollVelocity from './Component/ScrollVelo/ScrollVelo';
 import Maps from './Component/Maps/Maps';
 import CaraKerja from './Component/CaraKerja/CaraKerja';
 import WhyUs from './Component/WhyUs/WhyUs';
-import Logo from './Component/LogoScroll/Logo';
+import LogoPage from './Component/LogoScroll/LogoPage';
+import Team from './Component/Team/Team';
 function App() {
   const [IsOpen, setIsOpen] = useState(true);
   useEffect(() => {
@@ -39,19 +40,17 @@ function App() {
     };
   }, []);
   return (
-    <div className="min-h-[500vh] overflow-x-hidden  ">
-      <Navbars setIsOpen={setIsOpen} />
+    <div className="min-h-screen pb-4 overflow-x-hidden  ">
+      <Navbars />
       <Routes>
         <Route
           path="/"
           element={
             <>
               <div
-                className={`fixed top-0 left-0 w-full h-screen bg-[#BED1C5] z-50 flex items-center justify-center transition-all duration-1000 ease-in-out transform
-    ${IsOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-100'}
-  `}
+                className={`fixed top-0 left-0 w-full h-screen bg-[#BED1C5] z-50 flex items-center justify-center transition-all duration-1000 ease-in-out transform ${IsOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}
               >
-                <img src={logo} className="h-1/2" />
+                <img src={logo} alt="Logo" className="h-40 w-auto animate-pulse" />
               </div>
 
               <Jumbotron />
@@ -67,11 +66,11 @@ function App() {
               <Maps />
               <CaraKerja />
               <WhyUs />
-              <Logo />
+              <LogoPage />
             </>
           }
         />
-
+        <Route path="/team" element={<Team />} />
         <Route path="/login" element={<Login />} />
       </Routes>
     </div>

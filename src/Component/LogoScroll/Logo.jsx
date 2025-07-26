@@ -35,11 +35,11 @@ const partners = [
 
 const Logo = () => {
   return (
-    <div className="flex flex-wrap justify-center gap-5 p-6 bg-black dark:bg-gray-300">
+    <div className="flex justify-center gap-5 p-6">
       {partners.map((partner, index) => (
-        <div key={index} className={`flex items-center gap-3 bg-gradient-to-r ${partner.color} shadow-md dark:bg-gray-100 p-4 rounded-lg w-full sm:w-64 h-20`}>
+        <div key={index} className={`flex items-center gap-3 bg-gradient-to-r ${partner.color} shadow-md  p-4 rounded-lg w-full h-20`}>
           <img src={partner.logo} alt={partner.name} className="w-14 h-12 object-contain rounded-lg" />
-          <p className="text-white font-semibold text-lg">
+          <p className="text-white flex flex-wrap font-semibold text-lg">
             <span className={partner.textColor}>{partner.name.split(' ')[0]}</span> {partner.name.split(' ').slice(1).join(' ')}
           </p>
         </div>

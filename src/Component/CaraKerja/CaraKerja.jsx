@@ -25,7 +25,7 @@ const CaraKerja = () => {
   ];
 
   return (
-    <div className="px-6 py-12 bg-gray-100 flex flex-col rounded-[100px] shadow-2xl">
+    <div className="px-6 py-12 bg-gray-100 flex flex-col rounded-[100px] shadow-2xl" id="fitur">
       <h2 className="text-3xl font-bold text-center mb-10 text-green-700">Cara Kerja PetaniAI</h2>
       <div className="flex justify-center text-[19px] md:text-[30px] items-center mb-[30px]">
         <p className="text-black  Iam mr-3 font-bold">Fitur Unggulan</p>
