@@ -14,7 +14,7 @@ import ScrollVelocity from './Component/ScrollVelo/ScrollVelo';
 import Maps from './Component/Maps/Maps';
 import CaraKerja from './Component/CaraKerja/CaraKerja';
 import WhyUs from './Component/WhyUs/WhyUs';
-import FiturPage from './Component/WhyUs/FiturPage';
+import Logo from './Component/LogoScroll/Logo';
 function App() {
   const [IsOpen, setIsOpen] = useState(true);
   useEffect(() => {
@@ -67,7 +67,7 @@ function App() {
               <Maps />
               <CaraKerja />
               <WhyUs />
-              <FiturPage />
+              <Logo />
             </>
           }
         />
