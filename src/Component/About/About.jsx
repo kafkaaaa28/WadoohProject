@@ -16,10 +16,9 @@ const About = () => {
         <div className="shadow-lg  rounded-lg">
           <img src={tentang} className="h-[250px] w-[250px] rounded-lg" />
         </div>
-        <div className=" w-[350px] flex items-center text-center">
-          <p className="font-bold">
-            Kami hadir untuk menyediakan layanan konsultasi pertanian berbasis data. Melalui sistem ini, pengguna dapat memperoleh rekomendasi tanaman, pupuk, dan waktu tanam terbaik berdasarkan informasi lokasi, jenis tanah, cuaca, dan
-            musim.
+        <div className="w-[350px] text-center">
+          <p className="font-semibold text-gray-700">
+            Layanan konsultasi pertanian berbasis data dengan rekomendasi tanaman, pupuk, dan waktu tanam terbaik sesuai lokasi dan kondisi cuaca.
           </p>
         </div>
       </div>
@@ -29,21 +28,19 @@ const About = () => {
             <div className="bg-gray-200 shadow-lg w-[250px] my-[20px] rounded-lg">
               <img src={tentang2} className="h-[250px] w-[250px] rounded-lg" />
             </div>
-            <div className=" w-[350px] flex items-center text-center">
-              <p className="font-bold">
-                Kami juga dilengkapi dengan fitur peta interaktif, simulasi panen, serta artikel edukatif tentang pertanian dan kesehatan petani. Semua fitur dirancang untuk membantu petani dan masyarakat umum memahami pertanian secara
-                lebih modern, cepat, dan mudah.
-              </p>
-            </div>
+             <div className="w-[350px] text-center">
+            <p className="font-semibold text-gray-700">
+              Fitur peta interaktif, simulasi panen, dan artikel edukatif membantu petani memahami pertanian modern dengan cara yang mudah dan cepat.
+            </p>
+          </div>
           </>
         ) : (
           <>
-            <div className=" w-[350px] flex items-center text-center">
-              <p className="font-bold">
-                Kami juga dilengkapi dengan fitur peta interaktif, simulasi panen, serta artikel edukatif tentang pertanian dan kesehatan petani. Semua fitur dirancang untuk membantu petani dan masyarakat umum memahami pertanian secara
-                lebih modern, cepat, dan mudah.
-              </p>
-            </div>
+             <div className="w-[350px] text-center">
+            <p className="font-semibold text-gray-700">
+              Fitur peta interaktif, simulasi panen, dan artikel edukatif membantu petani memahami pertanian modern dengan cara yang mudah dan cepat.
+            </p>
+          </div>
             <div className="bg-gray-200 shadow-lg w-[250px] rounded-lg">
               <img src={tentang2} className="h-[250px] w-[250px] rounded-lg" />
             </div>

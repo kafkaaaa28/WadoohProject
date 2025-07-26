@@ -12,7 +12,9 @@ import About from './Component/About/About';
 import CuacaCard from './Component/CuacaCard/CuacaCard';
 import ScrollVelocity from './Component/ScrollVelo/ScrollVelo';
 import Maps from './Component/Maps/Maps';
-
+import CaraKerja from './Component/CaraKerja/CaraKerja';
+import WhyUs from './Component/WhyUs/WhyUs';
+import FiturPage from './Component/WhyUs/FiturPage';
 function App() {
   const [IsOpen, setIsOpen] = useState(true);
   useEffect(() => {
@@ -37,7 +39,7 @@ function App() {
     };
   }, []);
   return (
-    <div className="h-[400vh] overflow-x-hidden  ">
+    <div className="min-h-[500vh] overflow-x-hidden  ">
       <Navbars setIsOpen={setIsOpen} />
       <Routes>
         <Route
@@ -63,6 +65,9 @@ function App() {
               </div>
 
               <Maps />
+              <CaraKerja />
+              <WhyUs />
+              <FiturPage />
             </>
           }
         />

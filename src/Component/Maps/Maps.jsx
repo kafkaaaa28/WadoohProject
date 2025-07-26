@@ -6,7 +6,7 @@ import { FaSeedling } from 'react-icons/fa';
 import { FaRegCheckCircle } from 'react-icons/fa';
 const Maps = () => {
   return (
-    <div className="h-screen p-5 mt-[200px] md:mt-[10px] lg:mt-[40px]">
+    <div className="h-[75vh] md:h-[55vh] lg:h-[90vh] p-5 mt-[200px] md:mt-[10px] lg:mt-[40px]">
       <div className="h-[50vh] flex flex-col items-center justify-center lg:h-[70vh] ">
         <p className="text-center font-bold text-[30px] lg:text-[50px]">Tersedia Di Seluruh Indonesia</p>
         <img src={BgMaps} className="h-[75%]" />
