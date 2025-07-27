@@ -25,12 +25,12 @@ const CaraKerja = () => {
   ];
 
   return (
-    <div className="px-6 py-12 bg-gray-100 flex flex-col rounded-[100px] shadow-2xl" id="fitur">
-      <h2 className="text-3xl font-bold text-center mb-10 text-green-700">Cara Kerja PetaniAI</h2>
+    <div className="px-6 py-12 bg-gray-100 dark:bg-[#9CB8A7] mt-5 flex flex-col rounded-[100px] shadow-2xl" id="fitur">
+      <h2 className="text-3xl font-bold text-center mb-10 text-green-700 dark:text-white">Cara Kerja PetaniAI</h2>
       <div className="flex justify-center text-[19px] md:text-[30px] items-center mb-[30px]">
-        <p className="text-black  Iam mr-3 font-bold">Fitur Unggulan</p>
+        <p className="text-black  Iam mr-3 font-bold dark:text-white">Fitur Unggulan</p>
         <FiturPage
-          texts={['Konsultasi AI', 'Peta Interaktif', 'Simulasi Panen', 'Edukasi Pertanian']}
+          texts={['Konsultasi AI', 'Peta Interaktif', 'Simulasi Panen', 'Edukasi Tani']}
           mainClassName="px-2 sm:px-2 md:px-3 bg-[#568A69] text-white font-bold overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
           staggerFrom={'last'}
           initial={{ y: '100%' }}
@@ -44,7 +44,7 @@ const CaraKerja = () => {
       </div>
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {steps.map((step, index) => (
-          <div key={index} className="bg-gray-200 rounded-xl p-6 flex flex-col items-center text-center shadow-md transition-all duration-300 ease-in-out hover:rounded-bl-[100px] hover:rounded-tr-[100px]">
+          <div key={index} className="bg-gray-200 dark:bg-[#DEF7EC] rounded-xl p-6 flex flex-col items-center text-center shadow-md transition-all duration-300 ease-in-out hover:rounded-bl-[100px] hover:rounded-tr-[100px]">
             <div className="mb-4">{step.icon}</div>
             <h3 className="text-lg font-semibold mb-2">{step.title}</h3>
             <p className="text-gray-600 text-sm">{step.description}</p>

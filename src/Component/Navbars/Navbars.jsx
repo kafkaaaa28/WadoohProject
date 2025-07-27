@@ -3,7 +3,8 @@ import logo from '../Img/logo.png';
 import './Navbars.css';
 import { FaBars } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
-export default function Navbars({ setIsOpen, IsOpen }) {
+import DarkMode from '../DarkMode';
+export default function Navbars({ setDarkMode, darkMode, logout, isAuthenticated, user }) {
   const [animate, setAnimate] = useState(false);
   const [showContent, setShowContent] = useState(false);
   const [Open, setOpen] = useState(false);
@@ -46,6 +47,18 @@ export default function Navbars({ setIsOpen, IsOpen }) {
             </div>
             <div className="hidden md:flex gap-12 items-center text-focus-in">
               <ul className="flex gap-12">
+                {isAuthenticated && (
+                  <li
+                    onClick={() => {
+                      {
+                        user?.role === 'admin' ? navigate('/dashboardAdmin') : user?.role === 'petani' ? navigate('/dashboardPetani') : navigate('/');
+                      }
+                    }}
+                    className="relative  cursor-pointer text-gray-500 hover:text-[#1E6D3C] transition-colors duration-300 li-underline"
+                  >
+                    Dashboard
+                  </li>
+                )}
                 <li
                   onClick={() => {
                     const section = document.getElementById('tentang');
@@ -74,10 +87,19 @@ export default function Navbars({ setIsOpen, IsOpen }) {
                 </li>
               </ul>
             </div>
-            <div className="hidden md:block text-focus-in">
-              <button onClick={() => navigate('/login')} className="bg-white w-[125px] rounded-[40px] h-[40px] hover:bg-[#568A69] text-[#377A51] hover:text-white hover:shadow-lg transition ease-in-out duration-300">
-                Login
+            <div className="hidden md:flex gap-5 items-center justify-center text-focus-in">
+              <DarkMode darkMode={darkMode} setDarkMode={setDarkMode} />
+              <button
+                onClick={() => {
+                  isAuthenticated ? logout() : navigate('/login');
+                }}
+                className="bg-white dark:bg-[#568A69] dark:text-white dark:hover:bg-white dark:hover:text-[#568A69] w-[125px] rounded-[40px] h-[40px] hover:bg-[#568A69] text-[#377A51] hover:text-white hover:shadow-lg transition ease-in-out duration-300"
+              >
+                {isAuthenticated ? 'Logout' : 'Login'}
               </button>
+            </div>
+            <div className="md:hidden">
+              <DarkMode darkMode={darkMode} setDarkMode={setDarkMode} />
             </div>
             <div className="md:hidden bg-[#1E6D3C] text-white hover:text-black hover:bg-white w-6 flex items-center justify-center h-7 rounded-lg">
               <button onClick={Toggler}>
@@ -88,6 +110,18 @@ export default function Navbars({ setIsOpen, IsOpen }) {
 
           {Open && (
             <div className="flex flex-col mt-6 gap-4 text-gray-700 md:hidden animate-fade-in">
+              {isAuthenticated && (
+                <p
+                  onClick={() => {
+                    {
+                      user?.role === 'admin' ? navigate('/dashboardAdmin') : user?.role === 'petani' ? navigate('/dashboardPetani') : navigate('/');
+                    }
+                  }}
+                  className="cursor-pointer font-bold hover:text-[#1E6D3C]"
+                >
+                  Dashboard
+                </p>
+              )}
               <p
                 onClick={() => {
                   const section = document.getElementById('tentang');
@@ -111,12 +145,12 @@ export default function Navbars({ setIsOpen, IsOpen }) {
               </p>
               <button
                 onClick={() => {
+                  isAuthenticated ? logout() : navigate('/login');
                   setOpen(false);
-                  navigate('/login');
                 }}
                 className="bg-white w-[240px] rounded-[40px] absolute bottom-[10px] left-[45px] h-[40px] hover:bg-[#568A69] text-[#377A51] hover:text-white hover:shadow-lg transition ease-in-out duration-300"
               >
-                Login
+                {isAuthenticated ? 'Logout' : 'Login'}
               </button>
             </div>
           )}

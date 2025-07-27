@@ -25,24 +25,17 @@ const features = [
 
 const WhyUs = () => {
   return (
-    <div className="py-20 lg:px-[100px] mt-[30px] bg-gradient-to-br from-white  to-green-50 ">
-      <h2 className="text-4xl font-bold text-center text-green-700 mb-16">Kenapa Harus Memilih Kami?</h2>
-      
+    <div className="py-20 lg:px-[100px]   dark:bg-[#568A69]">
+      <h2 className="text-4xl font-bold text-center text-green-700 mb-16 dark:text-white">Kenapa Harus Memilih Kami?</h2>
+
       <div className="flex flex-col  gap-12">
         {features.map((item, index) => (
-          <div
-            key={index}
-            className={`flex flex-col  md:flex-row items-center gap-6 md:gap-10 ${
-              index % 2 !== 0 ? 'md:flex-row-reverse' : ''
-            }`}
-          >
-            <div className="relative bg-green-100 md:mx-[50px] hover:text-green-700 hover:bg-green-200 transition-all duration-300 w-[120px] h-[120px] rounded-full flex items-center justify-center shadow-lg">
-              {item.icon}
-            </div>
+          <div key={index} className={`flex flex-col  md:flex-row items-center gap-6 md:gap-10 ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}>
+            <div className="relative bg-green-100 md:mx-[50px] hover:text-green-700 hover:bg-green-200 transition-all duration-300 w-[120px] h-[120px] rounded-full flex items-center justify-center shadow-lg">{item.icon}</div>
 
             <div className="max-w-md text-center mx-3 md:text-left">
-              <h3 className="text-xl font-semibold text-green-800 mb-2">{item.title}</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+              <h3 className="text-xl font-semibold text-green-800 dark:text-white mb-2">{item.title}</h3>
+              <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">{item.desc}</p>
             </div>
           </div>
         ))}

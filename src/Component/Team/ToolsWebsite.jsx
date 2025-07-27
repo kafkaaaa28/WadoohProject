@@ -79,8 +79,8 @@ const tools = [
 
 const ToolsPage = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#f8fafc] to-white py-20 px-6">
-      <h2 className="text-4xl font-extrabold text-center mb-14 text-gray-800">🔧 Tools & Technologies Used</h2>
+    <div className="min-h-screen dark:bg-[#8FB49F] py-20 px-6">
+      <h2 className="text-4xl font-extrabold text-center mb-14 text-gray-800 dark:text-white">🔧 Tools & Technologies Used</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-10 justify-items-center">
         {tools.map((tool) => (
@@ -89,7 +89,7 @@ const ToolsPage = () => {
               <div className="text-5xl mb-3 transition-transform duration-300 group-hover:scale-110" style={{ color: tool.color }}>
                 {tool.icon}
               </div>
-              <p className="text-sm font-medium text-gray-800 group-hover:text-black">{tool.name}</p>
+              <p className="text-sm font-medium text-gray-800 font-bold group-hover:text-black">{tool.name}</p>
             </p>
             <div class="cover bg-gradient-to-t form-white to-green-400">
               <p>{tool.tect}</p>

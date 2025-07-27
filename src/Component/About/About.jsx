@@ -17,7 +17,7 @@ const About = () => {
           <img src={tentang} className="h-[250px] w-[250px] rounded-lg" />
         </div>
         <div className="w-[350px] text-center">
-          <p className="font-semibold text-gray-700">Layanan konsultasi pertanian berbasis data dengan rekomendasi tanaman, pupuk, dan waktu tanam terbaik sesuai lokasi dan kondisi cuaca.</p>
+          <p className="font-semibold text-gray-700 dark:text-gray-200">Layanan konsultasi pertanian berbasis data dengan rekomendasi tanaman, pupuk, dan waktu tanam terbaik sesuai lokasi dan kondisi cuaca.</p>
         </div>
       </div>
       <div className="flex gap-2 flex-col  lg:mt-0 md:-translate-x-[390px] lg:translate-x-0 md:w-screen lg:w-auto md:flex-row justify-evenly  w-full  items-center">
@@ -27,13 +27,13 @@ const About = () => {
               <img src={tentang2} className="h-[250px] w-[250px] rounded-lg" />
             </div>
             <div className="w-[350px] text-center">
-              <p className="font-semibold text-gray-700">Fitur peta interaktif, simulasi panen, dan artikel edukatif membantu petani memahami pertanian modern dengan cara yang mudah dan cepat.</p>
+              <p className="font-semibold text-gray-700 dark:text-gray-200">Fitur peta interaktif, simulasi panen, dan artikel edukatif membantu petani memahami pertanian modern dengan cara yang mudah dan cepat.</p>
             </div>
           </>
         ) : (
           <>
             <div className="w-[350px] text-center">
-              <p className="font-semibold text-gray-700">Fitur peta interaktif, simulasi panen, dan artikel edukatif membantu petani memahami pertanian modern dengan cara yang mudah dan cepat.</p>
+              <p className="font-semibold text-gray-700 dark:text-gray-200">Fitur peta interaktif, simulasi panen, dan artikel edukatif membantu petani memahami pertanian modern dengan cara yang mudah dan cepat.</p>
             </div>
             <div className="bg-gray-200 shadow-lg w-[250px] rounded-lg">
               <img src={tentang2} className="h-[250px] w-[250px] rounded-lg" />

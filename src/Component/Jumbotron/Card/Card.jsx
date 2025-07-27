@@ -25,7 +25,7 @@ const CardNews = () => {
   ];
 
   return (
-    <div className="flex flex-col md:flex-row gap-3">
+    <div className="flex dark:bg-[#568A69] flex-col md:flex-row gap-3">
       {Items.map((item, index) => {
         return (
           <a
