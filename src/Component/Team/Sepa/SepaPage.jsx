@@ -16,7 +16,7 @@ const SepaPage = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
   return (
-    <div className={`min-h-screen lg:h-[70vh] dark:bg-[#8FB49F] bg-white flex flex-col md:flex-row items-stretch justify-center px-6 py-12 gap-6 transition-opacity duration-700 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
+    <div className={`min-h-screen lg:h-[70vh]   flex flex-col md:flex-row items-stretch justify-center px-6 py-12 gap-6 transition-opacity duration-700 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
       {!Mobile ? (
         <>
           <div className="w-full md:w-1/2 p-8 rounded-xl flex flex-col justify-center">

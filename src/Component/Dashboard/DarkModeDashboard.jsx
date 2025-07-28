@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { MdOutlineLightMode, MdDarkMode } from 'react-icons/md';
+import { MdOutlineLightMode } from 'react-icons/md';
+import { FaLeaf } from 'react-icons/fa';
 
 function DarkModeToggle() {
   const [darkMode, setDarkMode] = useState(false);
@@ -20,7 +21,7 @@ function DarkModeToggle() {
       className="inline-flex items-center h-8 p-2 mr-5 text-lg border-solid hover:bg-white dark:text-[#80A794] hover:text-black dark:bg-white text-white bg-[#80A794] dark:hover:text-white rounded-lg dark:hover:bg-[#568A69] hover:border-white focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-700"
       aria-label="Toggle dark mode"
     >
-      {darkMode ? <MdOutlineLightMode /> : <MdDarkMode />}
+      {darkMode ? <MdOutlineLightMode /> : <FaLeaf />}
     </button>
   );
 }

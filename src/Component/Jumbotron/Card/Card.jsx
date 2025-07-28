@@ -3,7 +3,6 @@ import './Card.css';
 import { SiCnn, SiNewyorktimes } from 'react-icons/si';
 import { FcBbc } from 'react-icons/fc';
 import berita_1 from '../../Img/berita_1.jpeg';
-import berita_2 from '../../Img/berita_2.jpeg';
 import berita_3 from '../../Img/berita_3.jpeg';
 
 const CardNews = () => {

@@ -10,7 +10,7 @@ const KafkaPage = () => {
     setTimeout(() => setShowContent(true), 500);
   }, []);
   return (
-    <div className={`min-h-[screen] md:min-h-[70vh] dark:bg-[#8FB49F] flex flex-col md:flex-row items-stretch justify-center px-6 py-12 gap-6 transition-opacity duration-700 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
+    <div className={`min-h-[screen] md:min-h-[70vh]  flex flex-col md:flex-row items-stretch justify-center px-6 py-12 gap-6 transition-opacity duration-700 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
       <div className="w-full md:w-1/2 flex h-[70vh] justify-center items-center rounded-xl">
         <LanYardKafka position={[0, 0, 20]} gravity={[0, -40, 0]} />
       </div>

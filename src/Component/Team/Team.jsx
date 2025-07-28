@@ -19,10 +19,12 @@ const Team = () => {
       <div className={`fixed top-0 left-0 w-full h-screen bg-[#BED1C5] z-50 flex items-center justify-center transition-all duration-1000 ease-in-out transform ${IsOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}>
         <img src={logo} alt="Logo" className="h-40 w-auto animate-pulse" />
       </div>
-      <KafkaPage />
-      <SepaPage />
-      <FarhanPage />
-      <ToolsWebsite />
+      <div className="min-h-screen bg-white dark:bg-[#8FB49F]">
+        <KafkaPage />
+        <SepaPage />
+        <FarhanPage />
+        <ToolsWebsite />
+      </div>
     </>
   );
 };

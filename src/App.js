@@ -17,6 +17,7 @@ import WhyUs from './Component/WhyUs/WhyUs';
 import LogoPage from './Component/LogoScroll/LogoPage';
 import Team from './Component/Team/Team';
 import DashboardAdmin from './Component/Dashboard/Admin/Admin';
+import DashboardPetani from './Component/Dashboard/Petani/Petani';
 import api from './utils/api';
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -53,6 +54,7 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
   const isDashboard = location.pathname.startsWith('/dashboardAdmin');
+  const isPetani = location.pathname.startsWith('/dashboardPetani');
   const logout = () => {
     localStorage.removeItem('token');
     setIsAuthenticated(false);
@@ -84,7 +86,7 @@ function App() {
   }, []);
   return (
     <div className="min-h-screen overflow-x-hidden dark:bg-[#568A69] ">
-      {!isDashboard && <Navbars darkMode={darkMode} setDarkMode={setDarkMode} isAuthenticated={isAuthenticated} user={user} logout={logout} />}
+      {!isDashboard && !isPetani && <Navbars darkMode={darkMode} setDarkMode={setDarkMode} isAuthenticated={isAuthenticated} user={user} logout={logout} />}
       {loading ? (
         <div className={`fixed top-0 left-0 w-full h-screen bg-[#BED1C5] z-50 flex items-center justify-center transition-all duration-1000 ease-in-out transform ${IsOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}>
           <img src={logo} alt="Logo" className="h-40 w-auto animate-pulse" />
@@ -92,6 +94,7 @@ function App() {
       ) : (
         <Routes>
           <Route path="/dashboardAdmin/*" element={isAuthenticated && user?.role === 'admin' ? <DashboardAdmin setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user} /> : <Navigate to="/" />} />
+          <Route path="/dashboardPetani/*" element={isAuthenticated && user?.role === 'petani' ? <DashboardPetani setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user} /> : <Navigate to="/" />} />
           <Route
             path="/"
             element={

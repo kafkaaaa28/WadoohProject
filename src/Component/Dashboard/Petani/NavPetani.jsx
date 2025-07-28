@@ -4,20 +4,19 @@ import { FaHome, FaComments } from 'react-icons/fa';
 import { HiOutlineLogout } from 'react-icons/hi';
 import { MdSpaceDashboard } from 'react-icons/md';
 import { FaBarsStaggered } from 'react-icons/fa6';
-import { FaUser } from 'react-icons/fa';
 import { Popover } from 'flowbite-react';
 import kafka from '../../Img/logo.png';
 import api from '../../../utils/api';
+import { GiFarmer } from 'react-icons/gi';
 import DarkMode from '../DarkModeDashboard';
-import { RiAdminFill } from 'react-icons/ri';
 const NavAdmin = ({ setIsAuthenticated, setUser, Open, setOpen }) => {
   const Navigate = useNavigate();
   const [mobile, setMobile] = useState(false);
-  const [isAdmin, setIsadmin] = useState({});
-  const handleAdmin = async () => {
+  const [isPetani, setIsPetani] = useState({});
+  const handlePetani = async () => {
     try {
       const response = await api.get('/auth/me');
-      setIsadmin(response.data);
+      setIsPetani(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -66,17 +65,10 @@ const NavAdmin = ({ setIsAuthenticated, setUser, Open, setOpen }) => {
       </div>
     </div>
   );
-  const komen = (
-    <div className="w-[200px]  text-sm ">
-      <div className="  bg-[#0F1015] px-3 py-2 ">
-        <h3 className="font-semibold text-white ">User</h3>
-      </div>
-    </div>
-  );
 
   useEffect(() => {
     handleMobile();
-    handleAdmin();
+    handlePetani();
     window.addEventListener('resize', handleMobile);
 
     return () => {
@@ -91,7 +83,7 @@ const NavAdmin = ({ setIsAuthenticated, setUser, Open, setOpen }) => {
             <DarkMode />
             <div className="flex mr-3 gap-3 items-center">
               <img src={kafka} className="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500" />
-              <p className="text-black">{isAdmin.nama}</p>
+              <p className="text-black">{isPetani.nama}</p>
             </div>
             <button
               data-drawer-target="default-sidebar"
@@ -124,9 +116,9 @@ const NavAdmin = ({ setIsAuthenticated, setUser, Open, setOpen }) => {
               <DarkMode />
               <div className="flex mr-[30px] gap-3 items-center">
                 <div className="bg-white w-10 h-10 rounded-full flex items-center justify-center">
-                  <RiAdminFill className="w-7 h-7 text-[#406D53]" />
+                  <GiFarmer className="w-7 h-7 text-[#406D53]" />
                 </div>
-                <p className="text-white font-bold text-md ">{isAdmin.nama}</p>
+                <p className="text-white font-bold text-md ">{isPetani.nama}</p>
               </div>
             </div>
           </div>
@@ -158,7 +150,7 @@ const NavAdmin = ({ setIsAuthenticated, setUser, Open, setOpen }) => {
               <li>
                 <Popover className="bg-[#0F1015] text-[#0F1015]" content={Open || mobile ? null : content} trigger="hover" placement="right">
                   <a
-                    onClick={() => Navigate('/dashboardAdmin')}
+                    onClick={() => Navigate('/dashboardPetani')}
                     className="flex cursor-pointer text-sm items-center p-2   rounded-lg  hover:text-black   hover:bg-[#568A69] text-gray-600 dark:text-gray-200  hover:dark:text-white transition-colors duration-300 ease-out"
                   >
                     <div className="bg-white shadow-lg flex items-center justify-center w-8 h-8 rounded-xl">
@@ -179,20 +171,6 @@ const NavAdmin = ({ setIsAuthenticated, setUser, Open, setOpen }) => {
                       <FaHome className="text-lg text-gray-600" />
                     </div>
                     {Open || mobile ? <span className="ms-3">Home</span> : null}
-                  </button>
-                </Popover>
-              </li>
-              <li>
-                <Popover className="bg-[#0F1015] text-[#0F1015]" content={Open || mobile ? null : komen} trigger="hover" placement="right">
-                  <button
-                    onClick={() => Navigate('/dashboardAdmin/user')}
-                    href="#"
-                    className="flex w-full text-sm items-center p-2 rounded-lg  hover:bg-[#568A69] text-gray-600 hover:text-black dark:text-white  hover:dark:text-white transition-colors duration-300 ease-out"
-                  >
-                    <div className="bg-white shadow-lg flex items-center justify-center w-8 h-8 rounded-xl">
-                      <FaUser className="text-lg text-gray-600" />
-                    </div>
-                    {Open || mobile ? <span className="ms-3">User</span> : null}
                   </button>
                 </Popover>
               </li>

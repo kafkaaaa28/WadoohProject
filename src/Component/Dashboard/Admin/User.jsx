@@ -3,13 +3,14 @@ import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 import api from '../../../utils/api';
 import { Spinner } from 'flowbite-react';
 import DeleteUser from './DeleteUser';
-
+import ModalEdit from './EditUser';
 const Message = () => {
   const [DataUser, setDataUser] = useState([]);
   const [selectedUser, setSelectedUSer] = useState(null);
   const [error, setError] = useState('');
   const [OpenModal, setOpenModal] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [modalEdit, setModalEdit] = useState(false);
   const [fetchMessage, setfetchMessage] = useState(true);
   const getMessage = async () => {
     try {
@@ -40,16 +41,36 @@ const Message = () => {
     setSelectedUSer(data);
     setOpenModal(true);
   };
+  const handleEditClick = (data) => {
+    setSelectedUSer(data);
+    setModalEdit(true);
+    console.log('l');
+  };
+  const handleUpdate = async (id, updatedData) => {
+    setLoading(true);
+    try {
+      const res = await api.put(`/users/${id}`, updatedData);
+      setDataUser(DataUser.map((p) => (p.id === id ? res.data : p)));
+      setLoading(false);
+      await getMessage();
+      setModalEdit(false);
+      setError('');
+    } catch (err) {
+      console.error(err.response?.data?.message || 'Gagal memperbarui data');
+      setLoading(false);
+      setError(`Gagal Memperbarui Data User`);
+    }
+  };
   useEffect(() => {
     getMessage();
   }, []);
   return (
     <>
       <div className="p-6">
-        <div className="bg-[#D1D5DB] dark:bg-[#80A794] rounded-lg p-6">
+        <div className="bg-[linear-gradient(90deg,rgba(255,255,255,0.4)_0%,rgba(187,189,187,0.4)_50%,rgba(5,97,40,0.4)_100%)] dark:bg-[#80A794] rounded-lg p-6">
           <div className="relative overflow-x-auto">
             <table className="w-full text-sm text-left rtl:text-right text-black dark:text-white">
-              <thead className="text-xs border-b border-gray-600 uppercase bg-[#D1D5DB] dark:bg-[#80A794] text-black dark:text-white">
+              <thead className="text-xs border-b border-gray-600 uppercase  text-black dark:text-white">
                 <tr>
                   <th scope="col" className="px-6 py-3">
                     Email
@@ -74,7 +95,7 @@ const Message = () => {
                   </tr>
                 ) : (
                   DataUser.map((data) => (
-                    <tr key={data.id} className="bg-[#D1D5DB] rounded-lg dark:bg-[#80A794] hover:bg-gray-300 dark:hover:bg-[#6b967e] border-b border-gray-600 transition-colors">
+                    <tr key={data.id} className=" hover:bg-gray-300 dark:hover:bg-[#6b967e] border-b border-gray-600 transition-colors">
                       <td className="px-6 py-4 font-medium">{data.email}</td>
                       <td className="px-6 py-4">{data.nama}</td>
                       <td className="px-6 py-4">{data.role}</td>
@@ -83,7 +104,11 @@ const Message = () => {
                           <AiFillDelete />
                         </button>
 
-                        <button type="button" onClick={() => handleDelete(data)} className="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">
+                        <button
+                          type="button"
+                          onClick={() => handleEditClick(data)}
+                          className="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
+                        >
                           <AiFillEdit />
                         </button>
                       </td>
@@ -97,6 +122,7 @@ const Message = () => {
       </div>
 
       <DeleteUser show={OpenModal} onClose={setOpenModal} User={selectedUser} loading={loading} onDelete={HapusUser} error={error} />
+      <ModalEdit modalEdit={modalEdit} setModalEdit={setModalEdit} data={selectedUser} loading={loading} onUpdate={handleUpdate} error={error} />
     </>
   );
 };

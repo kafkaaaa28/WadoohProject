@@ -1,9 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import NavAdmin from './NavAdmin.jsx';
+import NavPetani from './NavPetani.jsx';
 import { Routes, Route } from 'react-router-dom';
-import DataBoardAdmin from './DataBoardAdmin.jsx';
-import User from './User.jsx';
+import DataBoardPetani from './DataBoard/DataBoardPetani.jsx';
 const Dashboard = ({ setIsAuthenticated, setUser }) => {
   const [Open, setOpen] = useState(true);
 
@@ -13,11 +12,10 @@ const Dashboard = ({ setIsAuthenticated, setUser }) => {
                 bg-gradient-to-t from-[#E3E5E6] to-[#8FB39E] 
                 dark:from-[#345D47] dark:to-[#568A69]"
     >
-      <NavAdmin setIsAuthenticated={setIsAuthenticated} setUser={setUser} setOpen={setOpen} Open={Open} />
+      <NavPetani setIsAuthenticated={setIsAuthenticated} setUser={setUser} setOpen={setOpen} Open={Open} />
       <div className={` transition-all duration-300 ease-in-out  ${Open ? 'lg:ml-[255px]' : 'lg:ml-[80px]'}`}>
         <Routes>
-          <Route index element={<DataBoardAdmin />} />
-          <Route path="/user" element={<User />} />
+          <Route index element={<DataBoardPetani />} />
         </Routes>
       </div>
     </div>

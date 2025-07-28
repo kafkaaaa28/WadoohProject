@@ -162,7 +162,7 @@ const Login = ({ setIsAuthenticated, setUser }) => {
                     </button>
                     <p className="text-[12px]">
                       Belum punya akun ?
-                      <span onClick={() => setAnimasiRegis(true)} className="text-blue-400 cursor-pointer hover:text-blue-600">
+                      <span onClick={() => setAnimasiRegis(true)} className="text-blue-400 cursor-pointer hover:text-blue-600 ml-2">
                         Daftar Sekarang
                       </span>
                       {animasiRegis && <Spinner color="success" aria-label="Success spinner example" className="w-[12px] h-[12px] ml-[10px] lg:hidden" />}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaGithub, FaReact, FaNodeJs } from 'react-icons/fa';
 import { SiExpress, SiPostman, SiMysql, SiTailwindcss, SiVercel, SiRailway } from 'react-icons/si';
 
@@ -78,25 +78,70 @@ const tools = [
 ];
 
 const ToolsPage = () => {
-  return (
-    <div className="min-h-screen dark:bg-[#8FB49F] py-20 px-6">
-      <h2 className="text-4xl font-extrabold text-center mb-14 text-gray-800 dark:text-white">🔧 Tools & Technologies Used</h2>
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-10 justify-items-center">
-        {tools.map((tool) => (
-          <a key={tool.name} href={tool.url} class="book">
-            <p>
-              <div className="text-5xl mb-3 transition-transform duration-300 group-hover:scale-110" style={{ color: tool.color }}>
+  const handleResize = () => {
+    setIsMobile(window.innerWidth <= 1024);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  return (
+    <div className="min-h-screen  py-20 px-6">
+      <h2 className="text-4xl font-extrabold text-center mb-14 text-gray-800 dark:text-white">Tools Website</h2>
+      {isMobile ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {tools.map((tool, idx) => (
+            <a
+              key={idx}
+              href={tool.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white/30 dark:bg-white/10 backdrop-blur-md border border-white/20 dark:border-white/10 
+          p-6 rounded-2xl shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300
+          flex flex-col gap-4 justify-center items-center text-center hover:ring-2 hover:ring-offset-2 hover:ring-[var(--tool-color)]"
+              style={{ '--tool-color': tool.color }}
+            >
+              <div
+                className="w-14 h-14 rounded-full flex items-center justify-center mb-2"
+                style={{
+                  background: `radial-gradient(circle at 30% 30%, ${tool.color}33, transparent 70%)`,
+                  color: tool.color,
+                }}
+              >
                 {tool.icon}
               </div>
-              <p className="text-sm font-medium text-gray-800 font-bold group-hover:text-black">{tool.name}</p>
-            </p>
-            <div class="cover bg-gradient-to-t form-white to-green-400">
-              <p>{tool.tect}</p>
-            </div>
-          </a>
-        ))}
-      </div>
+              <div>
+                <h3 className="text-xl font-semibold text-gray-800 dark:text-white">{tool.name}</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-300">{tool.tect}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 gap-10 justify-items-center">
+          {tools.map((tool) => (
+            <a key={tool.name} href={tool.url} class="book">
+              <p>
+                <div className="text-5xl mb-3 transition-transform duration-300 group-hover:scale-110" style={{ color: tool.color }}>
+                  {tool.icon}
+                </div>
+                <p className="text-sm  text-gray-800 font-bold group-hover:text-black">{tool.name}</p>
+              </p>
+              <div class="cover font-bold bg-gradient-to-t form-white to-green-400">
+                <p>{tool.tect}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
