@@ -1,7 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "/chatAi/:path*",
+      "source": "/dashboardPetani/petaniai/:path*",
       "destination": "https://app--petani-ai-db5ef2ef.base44.app/:path*"
     }
   ]

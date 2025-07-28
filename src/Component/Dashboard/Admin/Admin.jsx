@@ -4,6 +4,8 @@ import NavAdmin from './NavAdmin.jsx';
 import { Routes, Route } from 'react-router-dom';
 import DataBoardAdmin from './DataBoardAdmin.jsx';
 import User from './User.jsx';
+import TambahTanaman from './TambahTanaman.jsx';
+import DataTanaman from './DataTanaman.jsx';
 const Dashboard = ({ setIsAuthenticated, setUser }) => {
   const [Open, setOpen] = useState(true);
 
@@ -18,6 +20,8 @@ const Dashboard = ({ setIsAuthenticated, setUser }) => {
         <Routes>
           <Route index element={<DataBoardAdmin />} />
           <Route path="/user" element={<User />} />
+          <Route path="/tambahtanaman" element={<TambahTanaman />} />
+          <Route path="/datatanaman" element={<DataTanaman />} />
         </Routes>
       </div>
     </div>

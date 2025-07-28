@@ -39,13 +39,19 @@ const FarhanPage = () => {
         <p className="text-gray-800 dark:text-white text-center md:text-lg leading-relaxed font-bold">Mahasiswa di Universitas Widyatama,</p>
 
         <div className="flex justify-center  gap-6 mt-6 text-2xl">
-          <a href="https://github.com/kafkaaaa28" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-black transition-transform duration-300 transform hover:scale-110" title="GitHub">
+          <a href="https://github.com/RevanaKh" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-black transition-transform duration-300 transform hover:scale-110" title="GitHub">
             <FaGithub />
           </a>
-          <a href="https://instagram.com/kfkafrl_" target="_blank" rel="noopener noreferrer" className="text-pink-500 hover:text-pink-700 transition-transform duration-300 transform hover:scale-110" title="Instagram">
+          <a href="https://www.instagram.com/maahaputra" target="_blank" rel="noopener noreferrer" className="text-pink-500 hover:text-pink-700 transition-transform duration-300 transform hover:scale-110" title="Instagram">
             <FaInstagram />
           </a>
-          <a href="https://kafkaaaa.my.id" target="_blank" rel="noopener noreferrer" className="text-green-700 hover:text-green-900 transition-transform duration-300 transform hover:scale-110" title="Portfolio Website">
+          <a
+            href="https://app--farhan-maha-putra-portfolio-87d909a9.base44.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-green-700 hover:text-green-900 transition-transform duration-300 transform hover:scale-110"
+            title="Portfolio Website"
+          >
             <FaGlobe />
           </a>
         </div>

@@ -3,10 +3,12 @@ import hero from '../../Img/bg_dashboard.jpg';
 import api from '../../../utils/api';
 import { FiUsers } from 'react-icons/fi';
 import { Spinner } from 'flowbite-react';
+import { PiPlantFill } from 'react-icons/pi';
 const DataBoardAdmin = () => {
   const [totalUsers, setTotalUsers] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState({});
+  const [totalTanaman, setTotalTanaman] = useState(0);
   const fetchUser = async () => {
     try {
       const response = await api.get('/users');
@@ -14,6 +16,16 @@ const DataBoardAdmin = () => {
       setLoading(false);
     } catch (err) {
       console.log('gagal ambil data user');
+      setLoading(false);
+    }
+  };
+  const fetchPlants = async () => {
+    try {
+      const response = await api.get('/plants');
+      setTotalTanaman(response.data.length);
+      setLoading(false);
+    } catch (err) {
+      console.log('gagal ambil data tanaman');
       setLoading(false);
     }
   };
@@ -30,6 +42,7 @@ const DataBoardAdmin = () => {
   useEffect(() => {
     fetchUser();
     getMe();
+    fetchPlants();
   }, []);
 
   return (
@@ -63,6 +76,18 @@ const DataBoardAdmin = () => {
             </div>
 
             <h3 className="text-3xl font-bold text-gray-800 dark:text-white">{loading ? <Spinner color="success" aria-label="Success spinner example" /> : totalUsers}</h3>
+
+            <span className="text-xs text-gray-400 dark:text-white mt-2">Data Terbaru</span>
+          </div>
+          <div className="bg-white dark:bg-[#90B59F] rounded-xl shadow-md p-6 flex flex-col gap-3">
+            <div className="flex items-center gap-3">
+              <div className="p-3 bg-green-100 dark:bg-green-800 text-green-600 dark:text-green-300 rounded-full">
+                <PiPlantFill size={20} />
+              </div>
+              <p className="text-sm text-gray-500 dark:text-white">Total User Menanam</p>
+            </div>
+
+            <h3 className="text-3xl font-bold text-gray-800 dark:text-white">{loading ? <Spinner color="success" aria-label="Success spinner example" /> : totalTanaman}</h3>
 
             <span className="text-xs text-gray-400 dark:text-white mt-2">Data Terbaru</span>
           </div>

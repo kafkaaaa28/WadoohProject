@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaHome, FaComments } from 'react-icons/fa';
+import { FaHome, FaHistory } from 'react-icons/fa';
 import { HiOutlineLogout } from 'react-icons/hi';
 import { MdSpaceDashboard } from 'react-icons/md';
 import { FaBarsStaggered } from 'react-icons/fa6';
 import { Popover } from 'flowbite-react';
+import { GiWaterDrop } from 'react-icons/gi';
+import { BsRobot } from 'react-icons/bs';
+import { PiPlantFill } from 'react-icons/pi';
 import kafka from '../../Img/logo.png';
 import api from '../../../utils/api';
+import { GrArticle } from 'react-icons/gr';
 import { GiFarmer } from 'react-icons/gi';
 import DarkMode from '../DarkModeDashboard';
+import { TiWeatherCloudy } from 'react-icons/ti';
 const NavAdmin = ({ setIsAuthenticated, setUser, Open, setOpen }) => {
   const Navigate = useNavigate();
   const [mobile, setMobile] = useState(false);
@@ -46,26 +51,67 @@ const NavAdmin = ({ setIsAuthenticated, setUser, Open, setOpen }) => {
   };
   const content = (
     <div className="w-[200px]  text-sm ">
-      <div className="  bg-[#0F1015] px-3 py-2 ">
+      <div className="  bg-[#8AAC98] px-3 py-2 ">
         <h3 className="font-semibold text-white ">Dashboard</h3>
       </div>
     </div>
   );
   const keluar = (
     <div className="w-[200px]  text-sm ">
-      <div className="  bg-[#0F1015] px-3 py-2 ">
+      <div className="  bg-[#8AAC98] px-3 py-2 ">
         <h3 className="font-semibold text-white ">Logout</h3>
       </div>
     </div>
   );
   const home = (
     <div className="w-[200px]  text-sm ">
-      <div className="  bg-[#0F1015] px-3 py-2 ">
+      <div className="  bg-[#8AAC98] px-3 py-2 ">
         <h3 className="font-semibold text-white ">Home</h3>
       </div>
     </div>
   );
-
+  const lembab = (
+    <div className="w-[200px]  text-sm ">
+      <div className="  bg-[#8AAC98] px-3 py-2 ">
+        <h3 className="font-semibold text-white ">Lokasi</h3>
+      </div>
+    </div>
+  );
+  const PetaniAI = (
+    <div className="w-[200px]  text-sm ">
+      <div className="  bg-[#8AAC98] px-3 py-2 ">
+        <h3 className="font-semibold text-white ">Petani Ai</h3>
+      </div>
+    </div>
+  );
+  const tanaman = (
+    <div className="w-[200px]  text-sm ">
+      <div className="  bg-[#8AAC98] px-3 py-2 ">
+        <h3 className="font-semibold text-white ">Tanaman</h3>
+      </div>
+    </div>
+  );
+  const cuaca = (
+    <div className="w-[200px]  text-sm ">
+      <div className="  bg-[#8AAC98] px-3 py-2 ">
+        <h3 className="font-semibold text-white ">Cuaca</h3>
+      </div>
+    </div>
+  );
+  const history = (
+    <div className="w-[200px]  text-sm ">
+      <div className="  bg-[#8AAC98] px-3 py-2 ">
+        <h3 className="font-semibold text-white ">History</h3>
+      </div>
+    </div>
+  );
+  const artikel = (
+    <div className="w-[200px]  text-sm ">
+      <div className="  bg-[#8AAC98] px-3 py-2 ">
+        <h3 className="font-semibold text-white ">Artikel</h3>
+      </div>
+    </div>
+  );
   useEffect(() => {
     handleMobile();
     handlePetani();
@@ -148,7 +194,7 @@ const NavAdmin = ({ setIsAuthenticated, setUser, Open, setOpen }) => {
             <ul className="space-y-2 font-medium">
               {Open || mobile ? <p className="text-gray-600 text-sm dark:text-gray-200">Navigation</p> : null}
               <li>
-                <Popover className="bg-[#0F1015] text-[#0F1015]" content={Open || mobile ? null : content} trigger="hover" placement="right">
+                <Popover className="" content={Open || mobile ? null : content} trigger="hover" placement="right">
                   <a
                     onClick={() => Navigate('/dashboardPetani')}
                     className="flex cursor-pointer text-sm items-center p-2   rounded-lg  hover:text-black   hover:bg-[#568A69] text-gray-600 dark:text-gray-200  hover:dark:text-white transition-colors duration-300 ease-out"
@@ -161,7 +207,7 @@ const NavAdmin = ({ setIsAuthenticated, setUser, Open, setOpen }) => {
                 </Popover>
               </li>
               <li>
-                <Popover className="bg-[#0F1015] text-[#0F1015]" content={Open || mobile ? null : home} trigger="hover" placement="right">
+                <Popover className="" content={Open || mobile ? null : home} trigger="hover" placement="right">
                   <button
                     onClick={() => Navigate('/')}
                     href="#"
@@ -174,9 +220,92 @@ const NavAdmin = ({ setIsAuthenticated, setUser, Open, setOpen }) => {
                   </button>
                 </Popover>
               </li>
-
               <li>
-                <Popover className="bg-[#0F1015] text-[#0F1015]" content={Open || mobile ? null : keluar} trigger="hover" placement="right">
+                <Popover className="" content={Open || mobile ? null : lembab} trigger="hover" placement="right">
+                  <button
+                    onClick={() => Navigate('/dashboardPetani/ceklokasi')}
+                    href="#"
+                    className="flex w-full text-sm items-center p-2 rounded-lg  hover:bg-[#568A69] text-gray-600 hover:text-black dark:text-white  hover:dark:text-white transition-colors duration-300 ease-out"
+                  >
+                    <div className="bg-white shadow-lg flex items-center justify-center w-8 h-8 rounded-xl">
+                      <GiWaterDrop className="text-lg text-gray-600" />
+                    </div>
+                    {Open || mobile ? <span className="ms-3">Cek Lokasi</span> : null}
+                  </button>
+                </Popover>
+              </li>
+              <li>
+                <Popover className="" content={Open || mobile ? null : tanaman} trigger="hover" placement="right">
+                  <button
+                    onClick={() => Navigate('/dashboardPetani/menanam')}
+                    href="#"
+                    className="flex w-full text-sm items-center p-2 rounded-lg  hover:bg-[#568A69] text-gray-600 hover:text-black dark:text-white  hover:dark:text-white transition-colors duration-300 ease-out"
+                  >
+                    <div className="bg-white shadow-lg flex items-center justify-center w-8 h-8 rounded-xl">
+                      <PiPlantFill className="text-lg text-gray-600" />
+                    </div>
+                    {Open || mobile ? <span className="ms-3">Menanam Tanaman</span> : null}
+                  </button>
+                </Popover>
+              </li>
+              <li>
+                <Popover className="" content={Open || mobile ? null : cuaca} trigger="hover" placement="right">
+                  <button
+                    onClick={() => Navigate('/dashboardPetani/cuaca')}
+                    href="#"
+                    className="flex w-full text-sm items-center p-2 rounded-lg  hover:bg-[#568A69] text-gray-600 hover:text-black dark:text-white  hover:dark:text-white transition-colors duration-300 ease-out"
+                  >
+                    <div className="bg-white shadow-lg flex items-center justify-center w-8 h-8 rounded-xl">
+                      <TiWeatherCloudy className="text-lg text-gray-600" />
+                    </div>
+                    {Open || mobile ? <span className="ms-3">Cuaca</span> : null}
+                  </button>
+                </Popover>
+              </li>
+              <li>
+                <Popover className="" content={Open || mobile ? null : history} trigger="hover" placement="right">
+                  <button
+                    onClick={() => Navigate('/dashboardPetani/tanaman-saya')}
+                    href="#"
+                    className="flex w-full text-sm items-center p-2 rounded-lg  hover:bg-[#568A69] text-gray-600 hover:text-black dark:text-white  hover:dark:text-white transition-colors duration-300 ease-out"
+                  >
+                    <div className="bg-white shadow-lg flex items-center justify-center w-8 h-8 rounded-xl">
+                      <FaHistory className="text-lg text-gray-600" />
+                    </div>
+                    {Open || mobile ? <span className="ms-3">History</span> : null}
+                  </button>
+                </Popover>
+              </li>
+              <li>
+                <Popover className="" content={Open || mobile ? null : artikel} trigger="hover" placement="right">
+                  <button
+                    onClick={() => Navigate('/dashboardPetani/artikel')}
+                    href="#"
+                    className="flex w-full text-sm items-center p-2 rounded-lg  hover:bg-[#568A69] text-gray-600 hover:text-black dark:text-white  hover:dark:text-white transition-colors duration-300 ease-out"
+                  >
+                    <div className="bg-white shadow-lg flex items-center justify-center w-8 h-8 rounded-xl">
+                      <GrArticle className="text-lg text-gray-600" />
+                    </div>
+                    {Open || mobile ? <span className="ms-3">Artikel</span> : null}
+                  </button>
+                </Popover>
+              </li>
+              <li>
+                <Popover className="" content={Open || mobile ? null : PetaniAI} trigger="hover" placement="right">
+                  <button
+                    onClick={() => Navigate('/dashboardPetani/petaniai')}
+                    href="#"
+                    className="flex w-full text-sm items-center p-2 rounded-lg  hover:bg-[#568A69] text-gray-600 hover:text-black dark:text-white  hover:dark:text-white transition-colors duration-300 ease-out"
+                  >
+                    <div className="bg-white shadow-lg flex items-center justify-center w-8 h-8 rounded-xl">
+                      <BsRobot className="text-lg text-gray-600" />
+                    </div>
+                    {Open || mobile ? <span className="ms-3">Petani AI</span> : null}
+                  </button>
+                </Popover>
+              </li>
+              <li>
+                <Popover className="" content={Open || mobile ? null : keluar} trigger="hover" placement="right">
                   <button onClick={handleLogout} href="#" className="flex w-full text-sm items-center p-2 rounded-lg dark:text-gray-200  hover:bg-[#568A69] text-gray-600 hover:text-black transition-colors duration-300 ease-out">
                     <div className="bg-white shadow-lg flex items-center justify-center w-8 h-8 rounded-lg">
                       <HiOutlineLogout className="text-lg hover:text-black text-gray-600 " />

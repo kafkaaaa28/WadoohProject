@@ -73,7 +73,20 @@ const NavAdmin = ({ setIsAuthenticated, setUser, Open, setOpen }) => {
       </div>
     </div>
   );
-
+  const tanaman = (
+    <div className="w-[200px]  text-sm ">
+      <div className="  bg-[#0F1015] px-3 py-2 ">
+        <h3 className="font-semibold text-white ">Tanaman</h3>
+      </div>
+    </div>
+  );
+  const datatanam = (
+    <div className="w-[200px]  text-sm ">
+      <div className="  bg-[#0F1015] px-3 py-2 ">
+        <h3 className="font-semibold text-white ">Data Tanaman</h3>
+      </div>
+    </div>
+  );
   useEffect(() => {
     handleMobile();
     handleAdmin();
@@ -183,6 +196,34 @@ const NavAdmin = ({ setIsAuthenticated, setUser, Open, setOpen }) => {
                 </Popover>
               </li>
               <li>
+                <Popover className="" content={Open || mobile ? null : tanaman} trigger="hover" placement="right">
+                  <button
+                    onClick={() => Navigate('/dashboardAdmin/tambahtanaman')}
+                    href="#"
+                    className="flex w-full text-sm items-center p-2 rounded-lg  hover:bg-[#568A69] text-gray-600 hover:text-black dark:text-white  hover:dark:text-white transition-colors duration-300 ease-out"
+                  >
+                    <div className="bg-white shadow-lg flex items-center justify-center w-8 h-8 rounded-xl">
+                      <FaHome className="text-lg text-gray-600" />
+                    </div>
+                    {Open || mobile ? <span className="ms-3">Tambah Tanaman</span> : null}
+                  </button>
+                </Popover>
+              </li>{' '}
+              <li>
+                <Popover className="" content={Open || mobile ? null : datatanam} trigger="hover" placement="right">
+                  <button
+                    onClick={() => Navigate('/dashboardAdmin/datatanaman')}
+                    href="#"
+                    className="flex w-full text-sm items-center p-2 rounded-lg  hover:bg-[#568A69] text-gray-600 hover:text-black dark:text-white  hover:dark:text-white transition-colors duration-300 ease-out"
+                  >
+                    <div className="bg-white shadow-lg flex items-center justify-center w-8 h-8 rounded-xl">
+                      <FaHome className="text-lg text-gray-600" />
+                    </div>
+                    {Open || mobile ? <span className="ms-3">Data Tanaman</span> : null}
+                  </button>
+                </Popover>
+              </li>
+              <li>
                 <Popover className="bg-[#0F1015] text-[#0F1015]" content={Open || mobile ? null : komen} trigger="hover" placement="right">
                   <button
                     onClick={() => Navigate('/dashboardAdmin/user')}
@@ -196,7 +237,6 @@ const NavAdmin = ({ setIsAuthenticated, setUser, Open, setOpen }) => {
                   </button>
                 </Popover>
               </li>
-
               <li>
                 <Popover className="bg-[#0F1015] text-[#0F1015]" content={Open || mobile ? null : keluar} trigger="hover" placement="right">
                   <button onClick={handleLogout} href="#" className="flex w-full text-sm items-center p-2 rounded-lg dark:text-gray-200  hover:bg-[#568A69] text-gray-600 hover:text-black transition-colors duration-300 ease-out">

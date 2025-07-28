@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import hero from '../../../Img/bg_dashboard.jpg';
 import api from '../../../../utils/api';
-import { FiUsers } from 'react-icons/fi';
 import { Spinner } from 'flowbite-react';
 import { BsRobot } from 'react-icons/bs';
 import { GiWheat, GiWaterDrop } from 'react-icons/gi';
@@ -27,7 +26,7 @@ const features = [
   },
 ];
 
-const DataBoardAdmin = () => {
+const DataBoardAdmin = ({ Open }) => {
   const [loading, setLoading] = useState(true);
   const [isPetani, setIsPetani] = useState({});
 
@@ -67,14 +66,16 @@ const DataBoardAdmin = () => {
           </div>
         </div>
         <div>
-          <BoardCuaca />
+          <BoardCuaca Open={Open} />
         </div>
         <div className="flex items-center justify-center w-full">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {features.map((item, index) => (
               <div
                 key={index}
-                className="backdrop-blur-md cursor-pointer hover:rounded-br-[60px] hover:shadow-2xl hover:rounded-tl-[60px] transition-all duration-200 bg-white border border-white/20 dark:border-white/10 rounded-xl w-[350px] md:w-[400px] h-32 p-4 flex items-center gap-4 shadow-lg"
+                className={`backdrop-blur-md cursor-pointer hover:rounded-br-[60px] hover:shadow-2xl hover:rounded-tl-[60px] transition-all duration-200 bg-white border border-white/20 dark:border-white/10 rounded-xl w-[350px] ${
+                  Open ? 'md:w-[400px]' : 'md:w-[450px]'
+                }  h-32 p-4 flex items-center gap-4 shadow-lg`}
               >
                 <div className="shadow-lg border border-gray-200 p-3 rounded-full" style={{ backgroundColor: item.color }}>
                   {item.icon}

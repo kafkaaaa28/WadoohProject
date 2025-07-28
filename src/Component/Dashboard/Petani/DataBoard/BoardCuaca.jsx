@@ -3,13 +3,14 @@ import maps from '../../../Img/maps.webp';
 import axios from 'axios';
 import { Spinner } from 'flowbite-react';
 
-const BoardCuaca = () => {
+const BoardCuaca = ({ Open }) => {
   const [cuaca, setCuaca] = useState(null);
   const [loading, setLoading] = useState(true);
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
+  const [timeClass, setTimeClass] = useState('');
   const apiKey = process.env.REACT_APP_CUACA;
-
+  const hour = new Date().getHours();
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       async (pos) => {
@@ -30,6 +31,15 @@ const BoardCuaca = () => {
         setLoading(false);
       }
     );
+    if (hour >= 5 && hour < 10) {
+      setTimeClass('bg-gradient-to-r from-blue-300 via-blue-200 to-yellow-200');
+    } else if (hour >= 10 && hour < 15) {
+      setTimeClass('bg-gradient-to-r from-blue-500 via-blue-400 to-blue-300');
+    } else if (hour >= 15 && hour < 18) {
+      setTimeClass('bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400');
+    } else if (hour >= 19 || hour <= 5) {
+      setTimeClass('bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 text-white');
+    }
   }, []);
   const waktu = new Date().toLocaleString('id-ID', {
     weekday: 'long',
@@ -53,8 +63,8 @@ const BoardCuaca = () => {
 
       <div
         className={`
-    relative w-[350px] md:w-[400px] h-52 md:h-60 p-6 rounded-xl 
-    bg-white/30 dark:bg-white/10 backdrop-blur-lg shadow-lg
+    relative w-[350px] ${Open ? 'md:w-[400px]' : 'md:w-[550px]'} h-52 md:h-60 p-6 rounded-xl 
+     ${timeClass}  shadow-lg
     border border-white/20 dark:border-white/10
     flex items-center justify-center
     cursor-pointer transition-all duration-300
@@ -64,15 +74,15 @@ const BoardCuaca = () => {
         {loading ? (
           <div className="flex flex-col items-center justify-center h-full w-full text-center">
             <Spinner color="success" aria-label="Loading cuaca" />
-            <p className="mt-4 text-sm text-gray-700 dark:text-gray-200">Memuat cuaca...</p>
+            <p className={`mt-4 text-sm ${!timeClass ? 'text-white' : 'text-gray-700'}  `}>Memuat cuaca...</p>
           </div>
         ) : cuaca ? (
           <>
-            <div className="flex flex-col items-start text-black dark:text-white">
+            <div className={`flex flex-col items-start ${hour >= 19 || hour <= 5 ? 'text-white' : 'text-black'}`}>
               <h3 className="text-xl font-semibold">{cuaca.name}</h3>
               <div className="text-5xl font-bold mt-1">{Math.round(cuaca.main.temp)}°C</div>
-              <p className="capitalize text-sm text-gray-700 dark:text-gray-300 mt-1">{cuaca.weather[0].description}</p>
-              <p className="text-xs text-gray-600 mt-2 dark:text-gray-200">{waktu}</p>
+              <p className={`capitalize text-sm  ${hour >= 19 || hour <= 5 ? 'text-gray-300' : 'text-gray-700'}  mt-1`}>{cuaca.weather[0].description}</p>
+              <p className={`text-xs ${hour >= 19 || hour <= 5 ? 'text-gray-300' : 'text-gray-700'} mt-2 `}>{waktu}</p>
             </div>
 
             <img src={icon} alt="Ikon Cuaca" className="absolute right-4 top-4 w-16 h-16 opacity-80 drop-shadow-md" />
