@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { FaHome, FaHistory } from 'react-icons/fa';
 import { HiOutlineLogout } from 'react-icons/hi';
 import { MdSpaceDashboard } from 'react-icons/md';
@@ -292,18 +292,18 @@ const NavAdmin = ({ setIsAuthenticated, setUser, Open, setOpen }) => {
               </li>
               <li>
                 <Popover className="" content={Open || mobile ? null : PetaniAI} trigger="hover" placement="right">
-                  <button
-                    onClick={() => Navigate('/dashboardPetani/petaniai')}
-                    href="#"
-                    className="flex w-full text-sm items-center p-2 rounded-lg  hover:bg-[#568A69] text-gray-600 hover:text-black dark:text-white  hover:dark:text-white transition-colors duration-300 ease-out"
+                  <Link
+                    to="/dashboardPetani/petaniai"
+                    className="flex w-full text-sm items-center p-2 rounded-lg hover:bg-[#568A69] text-gray-600 hover:text-black dark:text-white hover:dark:text-white transition-colors duration-300 ease-out"
                   >
                     <div className="bg-white shadow-lg flex items-center justify-center w-8 h-8 rounded-xl">
                       <BsRobot className="text-lg text-gray-600" />
                     </div>
-                    {Open || mobile ? <span className="ms-3">Petani AI</span> : null}
-                  </button>
+                    {(Open || mobile) && <span className="ms-3">Petani AI</span>}
+                  </Link>
                 </Popover>
               </li>
+
               <li>
                 <Popover className="" content={Open || mobile ? null : keluar} trigger="hover" placement="right">
                   <button onClick={handleLogout} href="#" className="flex w-full text-sm items-center p-2 rounded-lg dark:text-gray-200  hover:bg-[#568A69] text-gray-600 hover:text-black transition-colors duration-300 ease-out">

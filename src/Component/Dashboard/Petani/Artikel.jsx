@@ -13,7 +13,8 @@ const Artikel = () => {
         if (data && Array.isArray(data.articles)) {
           setArticles(data.articles);
         } else {
-          setArticles([]); // fallback kalau articles tidak ada
+          setArticles([]);
+          ``;
           console.error('Articles tidak ditemukan di response');
         }
 
